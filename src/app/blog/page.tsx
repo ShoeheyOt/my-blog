@@ -18,6 +18,7 @@ export default function Blog() {
         <div>content1</div>
         <div>content1</div>
         <div>content1</div>
+        <div>content1</div>
       </article>
       <footer className="border-2 col-span-4 h-24">footer</footer>
     </div>
