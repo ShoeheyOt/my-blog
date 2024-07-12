@@ -1,0 +1,49 @@
+export const Articles = () => {
+  return (
+    <article className="border-2 w-5/6 ml-auto">
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+      <div>content1</div>
+    </article>
+  );
+};
