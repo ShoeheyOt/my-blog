@@ -4,9 +4,9 @@ import { Headers } from "../parts/Headers";
 
 export const BlogPage = () => {
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative bg-slate-700">
       <Headers />
-      <main className="flex w-full gap-8 mt-44">
+      <main className="flex w-full gap-8 mt-24">
         <Aside />
         <Articles />
       </main>
