@@ -1,3 +1,5 @@
+import { Button } from "@/features/Button";
+
 export const Headers = () => {
   return (
     <header className="fixed border-2 h-24 w-full">
@@ -8,23 +10,22 @@ export const Headers = () => {
         <div>
           <form className="flex gap-4">
             <div className="bg-white flex border rounded-md p-2">
-              <img src="icons/search.svg" className="w-6  mr-2" />
+              <img src="icons/search.svg" className="w-6 mr-2" />
               <input
                 placeholder="search"
                 className="border-none focus:outline-none text-black"
               />
             </div>
-            <button
-              type="submit"
-              className="bg-white text-black rounded-md px-4"
-            >
-              search
-            </button>
+
+            <Button buttonType="submit">search</Button>
           </form>
         </div>
-        <div className="flex">
-          <button>new Post</button>
-          <div>account</div>
+        <div className="flex gap-8">
+          <Button>new Post</Button>
+          <img
+            src="icons/person.png"
+            className="w-12 h-12 bg-white rounded-full"
+          />
         </div>
       </div>
     </header>
