@@ -9,6 +9,28 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+      },
+      fontSize: {
+        D_notes: "1rem",
+        D_text: "1.5rem",
+        D_title: "2.25rem",
+        D_logo: "3rem",
+        M_notes: "0.875rem",
+        M_text: "1rem",
+        M_title: "1.5rem",
+        M_logo: "2rem",
+      },
+      colors: {
+        primary: "#E5E2CD",
+        secondary: "#1C1F38",
+        warning: "#CEA716",
+        danger: "#E07A69",
+        info: "#8CA598",
+        success: "#45676F",
+        dark: "#252325",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
