@@ -1,6 +1,12 @@
+"use client";
 import { Button } from "@/features/Button";
 
 export const Headers = () => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
   return (
     <header className="fixed border-2 h-24 w-full bg-secondary text-primary">
       <div className="wrapper h-full flex justify-between items-center mx-4">
@@ -16,11 +22,14 @@ export const Headers = () => {
                 className="bg-primary border-none focus:outline-none text-secondary placeholder:text-secondary placeholder:opacity-50"
               />
             </div>
-            <Button buttonType="submit">search</Button>
+            <Button onClick={handleClick}>search</Button>
           </form>
         </div>
         <div className="flex gap-8">
-          <Button className="bg-warning opacity-90 font-semibold hover:opacity-100">
+          <Button
+            onClick={(e) => handleClick(e)}
+            className="bg-warning opacity-90 font-semibold hover:opacity-100"
+          >
             new Post
           </Button>
           <img
