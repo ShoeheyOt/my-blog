@@ -1,5 +1,9 @@
 export const Aside = () => {
   return (
-    <aside className="fixed border-2 w-1/6 h-[calc(100%-6rem)]">aside</aside>
+    <aside className="font-montserrat text-primary text-D_text font-extralight fixed border-2 w-1/6 h-[calc(100%-6rem)]">
+      <div className="h-1/4 border-2">filter by tag</div>
+      <div className="h-1/4 border-2">calender</div>
+      <div className="h-1/4 border-2">link to documentation</div>
+    </aside>
   );
 };
