@@ -12,10 +12,11 @@ export const Calender = () => {
       selected={selected}
       onSelect={setSelected}
       classNames={{
-        today: "bg-info rounded-lg",
+        root: "h-2/5 w-full",
+        today: "bg-info rounded-lg text-secondary",
         selected: "bg-primary rounded-lg text-secondary",
-        day: `${defaultClass.day} p-5 text-center`,
-        months: "relative",
+        day: `${defaultClass.day} p-3 text-center font-D_notes`,
+        months: "relative text-D_notes",
         nav: "absolute top-0 right-0",
         chevron: "fill-primary",
       }}
