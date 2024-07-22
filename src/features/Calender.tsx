@@ -13,9 +13,11 @@ export const Calender = () => {
       onSelect={setSelected}
       classNames={{
         root: "h-2/5 w-full",
+        month_caption: "mb-3",
+        caption_label: "text-D_text",
         today: "bg-info rounded-lg text-secondary",
         selected: "bg-primary rounded-lg text-secondary",
-        day: `${defaultClass.day} p-3 text-center font-D_notes`,
+        day: `${defaultClass.day} p-3 text-center text-D_notes`,
         months: "relative text-D_notes",
         nav: "absolute top-0 right-0",
         chevron: "fill-primary",
