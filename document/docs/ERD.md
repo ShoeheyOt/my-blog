@@ -20,6 +20,8 @@ erDiagram
         text string
         USER_Id user_id(FK)
         link string
+        createdAt Timestamp
+        updatedAt updatedAt
         isPublished boolean
     }
 
