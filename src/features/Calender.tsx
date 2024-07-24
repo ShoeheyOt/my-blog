@@ -18,7 +18,7 @@ export const Calender = () => {
         today: "bg-info rounded-lg text-secondary",
         selected: "bg-primary rounded-lg text-secondary",
         day: `${defaultClass.day} p-3 text-center text-D_notes`,
-        months: "relative text-D_notes",
+        months: "relative text-D_notes w-full",
         nav: "absolute top-0 right-0",
         chevron: "fill-primary",
       }}
