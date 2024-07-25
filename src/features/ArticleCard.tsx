@@ -1,19 +1,8 @@
 import { IArticleFake } from "../../public/articleFakeData";
 
-interface ITempData {
-  randomName: string;
-  randomTitle: string;
-  randomAvatar: string;
-  randomImage: string;
-  randomWords: string[];
-  randomAnytime: Date;
-}
 export const ArticleCard = ({ data }: { data: IArticleFake }) => {
   const { id, title, tags, imageUrl, author, createdAt } = data;
 
-  // const randomDate = `${randomAnytime.toLocaleString("default", {
-  //   month: "long",
-  // })}-${randomAnytime.getDate()}, ${randomAnytime.getFullYear()}`;
   return (
     <>
       <div className="cardWrapper w-96 h-[28rem] border-2 bg-warning rounded-lg">
