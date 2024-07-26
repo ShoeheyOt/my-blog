@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/features/Button";
+import Link from "next/link";
 
 export const Headers = () => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -26,12 +27,12 @@ export const Headers = () => {
           </form>
         </div>
         <div className="flex gap-8">
-          <Button
-            onClick={(e) => handleClick(e)}
-            className="bg-warning opacity-90 font-semibold hover:opacity-100"
+          <Link
+            href={"/blog/add"}
+            className="bg-warning opacity-90 font-semibold hover:opacity-100 rounded-lg text-center"
           >
             new Post
-          </Button>
+          </Link>
           <img
             src="icons/person.png"
             className="w-12 h-12 bg-primary rounded-full"
