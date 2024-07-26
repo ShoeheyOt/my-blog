@@ -1,10 +1,15 @@
+"use client";
+import Link from "next/link";
 import { IArticleFake } from "../../public/articleFakeData";
 
 export const ArticleCard = ({ data }: { data: IArticleFake }) => {
   const { id, title, tags, imageUrl, author, createdAt } = data;
 
   return (
-    <>
+    <Link
+      href={`/blog/${id}`}
+      className="hover:transition-all hover:scale-95 hover:opacity-50 cursor-pointer"
+    >
       <div className="cardWrapper w-96 h-[28rem] border-2 bg-warning rounded-lg">
         <div className="h-2/5 w-full mb-2">
           <img
@@ -33,6 +38,6 @@ export const ArticleCard = ({ data }: { data: IArticleFake }) => {
           </div>
         </div>
       </div>
-    </>
+    </Link>
   );
 };
