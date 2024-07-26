@@ -17,7 +17,7 @@ export const articleFakeData: IArticleFake[] = [
   {
     id: 1,
     title: faker.lorem.words({ min: 6, max: 10 }),
-    text: "this is sample 1 text",
+    text: faker.lorem.text(),
     tags: [faker.lorem.word(), faker.lorem.word()],
     imageUrl: faker.image.url(),
     author: {
@@ -42,7 +42,7 @@ export const articleFakeData: IArticleFake[] = [
   {
     id: 2,
     title: faker.lorem.words({ min: 6, max: 10 }),
-    text: "this is sample 2 text",
+    text: faker.lorem.text(),
     tags: [faker.lorem.word(), faker.lorem.word()],
     imageUrl: faker.image.url(),
     author: {
@@ -66,7 +66,7 @@ export const articleFakeData: IArticleFake[] = [
   {
     id: 3,
     title: faker.lorem.words({ min: 6, max: 10 }),
-    text: "this is sample 3 text",
+    text: faker.lorem.text(),
     tags: [faker.lorem.word(), faker.lorem.word()],
     imageUrl: faker.image.url(),
     author: {
@@ -90,7 +90,7 @@ export const articleFakeData: IArticleFake[] = [
   {
     id: 4,
     title: faker.lorem.words({ min: 6, max: 10 }),
-    text: "this is sample 4 text",
+    text: faker.lorem.text(),
     tags: [faker.lorem.word(), faker.lorem.word()],
     imageUrl: faker.image.url(),
     author: {
@@ -114,7 +114,7 @@ export const articleFakeData: IArticleFake[] = [
   {
     id: 5,
     title: faker.lorem.words({ min: 6, max: 10 }),
-    text: "this is sample 5 text",
+    text: faker.lorem.text(),
     tags: [faker.lorem.word(), faker.lorem.word()],
     imageUrl: faker.image.url(),
     author: {
@@ -138,7 +138,7 @@ export const articleFakeData: IArticleFake[] = [
   {
     id: 6,
     title: faker.lorem.words({ min: 6, max: 10 }),
-    text: "this is sample 6 text",
+    text: faker.lorem.text(),
     tags: [faker.lorem.word(), faker.lorem.word()],
     imageUrl: faker.image.url(),
     author: {
@@ -162,7 +162,7 @@ export const articleFakeData: IArticleFake[] = [
   {
     id: 7,
     title: faker.lorem.words({ min: 6, max: 10 }),
-    text: "this is sample 7 text",
+    text: faker.lorem.text(),
     tags: [faker.lorem.word(), faker.lorem.word()],
     imageUrl: faker.image.url(),
     author: {
