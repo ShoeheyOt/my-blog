@@ -30,14 +30,14 @@ export const AddForm = () => {
         onSubmit={handleSubmit}
         className="w-full h-screen border-2 mx-auto my-auto flex justify-center items-center"
       >
-        <div className="addPostWrapper flex flex-col">
+        <div className="addPostWrapper flex flex-col font-montserrat gap-2">
           <label>
             Title:
-            <input ref={titleRef} className="border-2" />
+            <input ref={titleRef} className="border-2 rounded-lg" />
           </label>
           <label className="w-full">
             Text:
-            <textarea ref={textRef} className="border-2" />
+            <textarea ref={textRef} className="border-2 rounded-lg w-auto" />
           </label>
           <div className="submitWrapper flex justify-between">
             <button
