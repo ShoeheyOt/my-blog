@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { FormEvent, useRef } from "react";
+import { Button } from "./Button";
 
 export const AddForm = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ export const AddForm = () => {
     if (title != null && text != null) {
       console.log({ title: title.value, text: text.value });
     }
-    router.push("/");
+    router.push("/blog/add");
   };
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -25,34 +26,41 @@ export const AddForm = () => {
   };
 
   return (
-    <>
+    <div className="h-full mx-96">
+      <div className="text-center my-8 border-2 text-D_title font-montserrat font-thin">
+        New Post
+      </div>
       <form
         onSubmit={handleSubmit}
-        className="w-full h-screen border-2 mx-auto my-auto flex justify-center items-center"
+        className="w-full border-2 mx-auto my-auto flex justify-center "
       >
-        <div className="addPostWrapper flex flex-col font-montserrat gap-2">
+        <div className="addPostWrapper flex flex-col font-montserrat gap-2 w-full px-12 h-[calc(100dvh/1.5)]">
           <label>
             Title:
-            <input ref={titleRef} className="border-2 rounded-lg" />
+            <input
+              ref={titleRef}
+              name="title"
+              className="border-2 rounded-lg w-full"
+            />
           </label>
-          <label className="w-full">
+          <label className="w-full h-full">
             Text:
-            <textarea ref={textRef} className="border-2 rounded-lg w-auto" />
+            <textarea
+              ref={textRef}
+              name="text"
+              className="border-2 rounded-lg w-full h-[calc(100%-3rem)]"
+            />
           </label>
           <div className="submitWrapper flex justify-between">
-            <button
-              type="button"
-              onClick={(e) => handleCancel(e)}
-              className="border-2"
-            >
+            <Button onClick={(e) => handleCancel(e)} className="border-2">
               cancel
-            </button>
-            <button type="submit" className="border-2">
+            </Button>
+            <Button buttonType="submit" className="border-2">
               Submit
-            </button>
+            </Button>
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
