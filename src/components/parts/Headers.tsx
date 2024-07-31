@@ -1,13 +1,19 @@
 "use client";
 import { Button } from "@/features/Button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export const Headers = () => {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const router = useRouter();
+  const handleSearchClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
     console.log(e);
   };
-
+  const handleAddClick = () => {
+    router.push("/blog/add");
+  };
   return (
     <header className="fixed border-2 h-24 w-full bg-secondary text-primary">
       <div className="wrapper h-full flex justify-between items-center mx-4">
@@ -23,16 +29,16 @@ export const Headers = () => {
                 className="bg-primary border-none focus:outline-none text-secondary placeholder:text-secondary placeholder:opacity-50"
               />
             </div>
-            <Button onClick={handleClick}>search</Button>
+            <Button onClick={handleSearchClick}>search</Button>
           </form>
         </div>
         <div className="flex gap-8">
-          <Link
-            href={"/blog/add"}
+          <Button
+            onClick={handleAddClick}
             className="bg-warning opacity-90 font-semibold hover:opacity-100 rounded-lg text-center"
           >
             new Post
-          </Link>
+          </Button>
           <img
             src="icons/person.png"
             className="w-12 h-12 bg-primary rounded-full"
