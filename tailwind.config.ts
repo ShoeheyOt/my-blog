@@ -29,7 +29,8 @@ const config: Config = {
         danger: "#E07A69",
         info: "#8CA598",
         success: "#45676F",
-        dark: "#252325",
+        light: "#fafafa",
+        dark: "#333",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
