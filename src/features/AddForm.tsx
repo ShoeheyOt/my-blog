@@ -1,12 +1,15 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Button } from "./Button";
 
 export const AddForm = () => {
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
   const textRef = useRef<HTMLTextAreaElement | null>(null);
+  const [list, setList] = useState<
+    { empty: boolean; name: string; sizeOnDisk: number }[] | null
+  >(null);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -26,6 +29,19 @@ export const AddForm = () => {
   };
   const handleBack = () => {
     router.push("/blog");
+  };
+
+  let dataList: { empty: boolean; name: string; sizeOnDisk: number }[] = [];
+
+  const handleTest = async () => {
+    const res: Response = await fetch("http://localhost:3000/api/blog", {
+      method: "GET",
+      cache: "no-store",
+    });
+    const data = await res.json();
+    dataList = data.lists.databases;
+    console.log(dataList);
+    setList(dataList);
   };
 
   return (
@@ -68,6 +84,12 @@ export const AddForm = () => {
             </div>
           </div>
         </form>
+        <Button onClick={handleTest}>Test</Button>
+        <ul>
+          {list?.map((db, i) => (
+            <li key={i}>{db.name}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
