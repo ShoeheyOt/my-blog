@@ -11,13 +11,20 @@ export const AddForm = () => {
     { empty: boolean; name: string; sizeOnDisk: number }[] | null
   >(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const title = titleRef.current;
     const text = textRef.current;
-    if (title != null && text != null) {
-      console.log({ title: title.value, text: text.value });
-    }
+    if (title === null || text === null) return;
+    const inputTitle = title.value;
+    const inputText = text.value;
+    const res = await fetch("http://localhost:3000/api/blog", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ inputTitle, inputText }),
+    });
     router.push("/blog/add");
   };
 
@@ -29,19 +36,6 @@ export const AddForm = () => {
   };
   const handleBack = () => {
     router.push("/blog");
-  };
-
-  let dataList: { empty: boolean; name: string; sizeOnDisk: number }[] = [];
-
-  const handleTest = async () => {
-    const res: Response = await fetch("http://localhost:3000/api/blog", {
-      method: "GET",
-      cache: "no-store",
-    });
-    const data = await res.json();
-    dataList = data.lists.databases;
-    console.log(dataList);
-    setList(dataList);
   };
 
   return (
@@ -84,12 +78,6 @@ export const AddForm = () => {
             </div>
           </div>
         </form>
-        <Button onClick={handleTest}>Test</Button>
-        <ul>
-          {list?.map((db, i) => (
-            <li key={i}>{db.name}</li>
-          ))}
-        </ul>
       </div>
     </div>
   );
