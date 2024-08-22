@@ -1,20 +1,30 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Button } from "./Button";
 
 export const AddForm = () => {
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
   const textRef = useRef<HTMLTextAreaElement | null>(null);
+  const [list, setList] = useState<
+    { empty: boolean; name: string; sizeOnDisk: number }[] | null
+  >(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const title = titleRef.current;
     const text = textRef.current;
-    if (title != null && text != null) {
-      console.log({ title: title.value, text: text.value });
-    }
+    if (title === null || text === null) return;
+    const inputTitle = title.value;
+    const inputText = text.value;
+    const res = await fetch("http://localhost:3000/api/blog", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ inputTitle, inputText }),
+    });
     router.push("/blog/add");
   };
 
