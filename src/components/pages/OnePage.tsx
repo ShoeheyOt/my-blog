@@ -11,7 +11,7 @@ export const OnePage = ({
 }) => {
   const { title, text, createdAt, author } = articleFakeOneData;
   return (
-    <div className="oneArticleWrapper px-96 min-h-screen bg-primary">
+    <div className="oneArticleWrapper px-96 pt-24 min-h-screen bg-primary">
       <div className="text-D_title font-thin">{title}</div>
       <div className="flex gap-4 mt-4">
         <div className="text-end">{author.authorName} | </div>
