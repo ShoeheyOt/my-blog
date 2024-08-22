@@ -14,7 +14,7 @@ export const ArticleCard = ({ data }: { data: IArticleFake }) => {
   const { id, title, tags, imageUrl, author, createdAt } = data;
 
   return (
-    <Card className="border-2 bg-dark m-10">
+    <Card className="border-2 bg-primary  m-10">
       <Link href={`/blog/${id}`}>
         <CardHeader>
           <CardTitle>{title}</CardTitle>

@@ -38,7 +38,7 @@ const config: Config = {
         danger: "#E07A69",
         info: "#8CA598",
         success: "45676F",
-        light: "#ffafa",
+        light: "#fafafa",
         dark: "#333",
       },
       keyframes: {
