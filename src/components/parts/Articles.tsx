@@ -1,15 +1,5 @@
 import { ArticleCard } from "@/features/ArticleCard";
 import { articleFakeData } from "../../../public/articleFakeData";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
-import Link from "next/link";
-import { Button } from "../ui/button";
 
 export const Articles = () => {
   const fakeData = articleFakeData;

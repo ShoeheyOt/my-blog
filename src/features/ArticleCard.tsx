@@ -22,13 +22,8 @@ export const ArticleCard = ({ data }: { data: IArticleFake }) => {
         </CardHeader>
       </Link>
       <CardFooter className="flex justify-end gap-4">
-        <Button
-          onClick={() => console.log("click delete")}
-          className="bg-danger text-secondary"
-        >
-          Delete
-        </Button>
-        <Button onClick={() => console.log("clicked edit")}>Edit</Button>
+        <Button variant="destructive">Delete</Button>
+        <Button variant="default">Edit</Button>
       </CardFooter>
     </Card>
   );
