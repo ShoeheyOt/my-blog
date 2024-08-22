@@ -1,4 +1,3 @@
-import main from "@/lib/db";
 import { Articles } from "../parts/Articles";
 import { Aside } from "../parts/Aside";
 import { Headers } from "../parts/Headers";
