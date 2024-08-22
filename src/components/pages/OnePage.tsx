@@ -1,4 +1,6 @@
 import { IArticleFakeOneData } from "@/lib/type";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export const OnePage = ({
   articleId,
@@ -9,14 +11,13 @@ export const OnePage = ({
 }) => {
   const { title, text, tags, createdAt, imageUrl, author } = articleFakeOneData;
   return (
-    <div className="oneArticleWrapper mx-96 min-h-screen bg-primary">
+    <div className="oneArticleWrapper px-96 min-h-screen bg-primary">
       <div className="text-D_title font-thin">{title}</div>
-      <div className="text-D_text font-thin text-center">{text}</div>
-      <div className="imageWrapper flex justify-center">
-        <img src={imageUrl} />
+      <div className="text-end">{author.authorName}</div>
+      <div className="my-10 text-D_text min-h-80 font-thin text-center">
+        {text}
       </div>
 
-      <div>{author.authorName}</div>
       <div className="tagsWrapper">
         {tags.map((tag, i) => (
           <span
@@ -27,7 +28,12 @@ export const OnePage = ({
           </span>
         ))}
       </div>
-      <div>{createdAt}</div>
+      <div className="flex flex-col gap-4 mt-4">
+        <div className="self-end">{createdAt}</div>
+        <Button asChild className="self-end">
+          <Link href="/blog">Back</Link>
+        </Button>
+      </div>
     </div>
   );
 };
