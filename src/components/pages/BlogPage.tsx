@@ -1,11 +1,10 @@
-import main from "@/lib/db";
 import { Articles } from "../parts/Articles";
 import { Aside } from "../parts/Aside";
 import { Headers } from "../parts/Headers";
 
 export const BlogPage = () => {
   return (
-    <div className="flex flex-col relative bg-slate-700">
+    <div className="flex flex-col relative">
       <Headers />
       <main className="flex w-full gap-8 mt-24">
         <Aside />

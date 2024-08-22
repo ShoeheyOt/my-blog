@@ -17,8 +17,8 @@ export const Button = ({
       onClick={(e) => onClick && onClick(e)}
       type={type}
       className={cn(
-        "bg-primary text-secondary font-montserrat font-medium rounded-md w-24 h-12",
-        className,
+        "bg-primary text-secondary font-medium rounded-md w-24 h-12",
+        className
       )}
     >
       {children}

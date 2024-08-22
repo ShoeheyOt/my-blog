@@ -18,7 +18,7 @@ export const Headers = () => {
     <header className="fixed border-2 h-24 w-full bg-secondary text-primary">
       <div className="wrapper h-full flex justify-between items-center mx-4">
         <a href="/blog">
-          <h1 className="font-montserrat text-D_logo font-light">THE BLOG</h1>
+          <h1 className="text-D_logo font-light">THE BLOG</h1>
         </a>
         <div>
           <form className="flex gap-4">

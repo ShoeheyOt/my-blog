@@ -42,7 +42,7 @@ export const AddForm = () => {
     <div className="w-screen h-screen bg-light py-8">
       <div className="h-full mx-96">
         <header className="postBlogWrapper border-2 rounded-lg flex justify-between items-center px-12 bg-secondary text-primary">
-          <div className="text-center my-8 text-D_title font-montserrat font-extralight">
+          <div className="text-center my-8 text-D_title  font-extralight">
             New Post
           </div>
           <Button onClick={handleBack} className="bg-danger">
@@ -53,7 +53,7 @@ export const AddForm = () => {
           onSubmit={handleSubmit}
           className="w-full border-2 mx-auto my-auto flex justify-center rounded-lg bg-secondary"
         >
-          <div className="addPostWrapper flex flex-col font-montserrat gap-2 w-full px-12 py-8 h-[calc(100dvh/1.5)]">
+          <div className="addPostWrapper flex flex-col gap-2 w-full px-12 py-8 h-[calc(100dvh/1.5)]">
             <label className="text-primary text-D_text font-extralight">
               Title:
               <input
