@@ -20,7 +20,7 @@ export const ArticleCard = ({ data }: { data: IArticleFake }) => {
         <div className="articleWrapper h-3/5 mx-2 py-4 flex flex-col justify-between">
           <div className="mainCardWrapper flex flex-col gap-3">
             <div className="date text-D_notes font-extralight">{createdAt}</div>
-            <div className="text font-montserrat h-1/6 flex items-center gap-3">
+            <div className="text h-1/6 flex items-center gap-3">
               <img src={author.authorAvatar} className="w-8 h-8 rounded-full" />
               <span className="name">{author.authorName}</span>
             </div>
