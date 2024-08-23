@@ -20,8 +20,13 @@ export async function main() {
 export const GET = async (req: Request, res: NextResponse) => {
   try {
     await main();
-    const lists = await listDatabases(client);
-    return NextResponse.json({ message: "success", lists }, { status: 200 });
+    const articles = await client
+      .db(DB)
+      .collection(COLLECTION!)
+      .find({})
+      .toArray();
+
+    return NextResponse.json({ message: "success", articles }, { status: 200 });
   } catch (error) {
     Error("failed to get the data");
   } finally {
@@ -32,15 +37,21 @@ export const GET = async (req: Request, res: NextResponse) => {
 export const POST = async (req: Request, res: NextResponse) => {
   try {
     await main();
-    console.log("collection", COLLECTION);
-    console.log("DB", DB);
 
     const { inputTitle, inputText }: { inputTitle: string; inputText: string } =
       await req.json();
+
+    const insertData = {
+      title: inputTitle,
+      text: inputText,
+      createdAt: new Date(),
+      isPublished: false,
+    };
+
     const data = await client
       .db(DB)
       .collection(COLLECTION!)
-      .insertOne({ inputTitle, inputText });
+      .insertOne(insertData);
 
     return NextResponse.json({ message: "success", data }, { status: 201 });
   } catch (error) {
@@ -58,9 +69,4 @@ export const DELETE = async (req: Request, res: NextResponse) => {
   } finally {
     await client.close();
   }
-};
-
-const listDatabases = async (client: MongoClient) => {
-  const databasesList = await client.db().admin().listDatabases();
-  return databasesList;
 };

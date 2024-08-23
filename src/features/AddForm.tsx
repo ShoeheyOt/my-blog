@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useRef, useState } from "react";
 import { Button } from "./Button";
+import { IOneArticle } from "@/lib/type";
 
 export const AddForm = () => {
   const router = useRouter();
@@ -28,9 +29,10 @@ export const AddForm = () => {
     router.push("/blog/add");
   };
 
-  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleCancel = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
-
     if (titleRef.current != null) titleRef.current.value = "";
     if (textRef.current != null) textRef.current.value = "";
   };

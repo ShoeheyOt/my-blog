@@ -9,11 +9,11 @@ export const OnePage = ({
   articleId: number;
   articleFakeOneData: IArticleFakeOneData;
 }) => {
-  const { title, text, tags, createdAt, author } = articleFakeOneData;
+  const { title, text, createdAt, author } = articleFakeOneData;
   return (
-    <div className="oneArticleWrapper px-96 min-h-screen bg-primary">
+    <div className="oneArticleWrapper px-96 pt-24 min-h-screen bg-primary">
       <div className="text-D_title font-thin">{title}</div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 mt-4">
         <div className="text-end">{author.authorName} | </div>
         <div className="self-end">{createdAt}</div>
       </div>
@@ -22,7 +22,7 @@ export const OnePage = ({
       </div>
 
       <div className="flex mt-4 justify-between">
-        <Button asChild className="">
+        <Button asChild>
           <Link href="/blog">Back</Link>
         </Button>
         <div className="flex gap-2">
