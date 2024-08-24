@@ -9,13 +9,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { IOneArticle } from "@/lib/type";
 
-export const ArticleCard = ({ data }: { data: IArticleFake }) => {
-  const { id, title, tags, imageUrl, author, createdAt } = data;
+export const ArticleCard = ({ data }: { data: IOneArticle }) => {
+  const { _id, title, createdAt } = data;
 
   return (
     <Card className="border-2 bg-primary  m-10">
-      <Link href={`/blog/${id}`}>
+      <Link href={`/blog/${_id}`}>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
           <CardDescription>{createdAt}</CardDescription>

@@ -1,3 +1,4 @@
+import { INewOneArticle } from "@/lib/type";
 import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 const uri = process.env.MONGODB_URL;
@@ -38,24 +39,16 @@ export const POST = async (req: Request, res: NextResponse) => {
   try {
     await main();
 
-    const { inputTitle, inputText }: { inputTitle: string; inputText: string } =
-      await req.json();
-
-    const insertData = {
-      title: inputTitle,
-      text: inputText,
-      createdAt: new Date(),
-      isPublished: false,
-    };
+    const inputData: INewOneArticle = await req.json();
 
     const data = await client
       .db(DB)
       .collection(COLLECTION!)
-      .insertOne(insertData);
+      .insertOne(inputData);
 
     return NextResponse.json({ message: "success", data }, { status: 201 });
   } catch (error) {
-    Error("failed to post the data");
+    Error("failed to post the data", error!);
   } finally {
     await client.close();
   }

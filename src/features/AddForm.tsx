@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useRef, useState } from "react";
 import { Button } from "./Button";
 import { IOneArticle } from "@/lib/type";
+import { postOneArticle } from "@/lib/api";
 
 export const AddForm = () => {
   const router = useRouter();
@@ -19,14 +20,8 @@ export const AddForm = () => {
     if (title === null || text === null) return;
     const inputTitle = title.value;
     const inputText = text.value;
-    const res = await fetch("http://localhost:3000/api/blog", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ inputTitle, inputText }),
-    });
-    router.push("/blog/add");
+    await postOneArticle(inputTitle, inputText);
+    router.push("/blog");
   };
 
   const handleCancel = async (

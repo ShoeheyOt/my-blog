@@ -1,9 +1,15 @@
 import { OnePage } from "@/components/pages/OnePage";
 import { articleFakeData } from "../../../../public/articleFakeData";
+import { fetchAllBlogs } from "@/lib/api";
 
-export default function BlogOnePage({ params }: { params: { id: number } }) {
+export default async function BlogOnePage({
+  params,
+}: {
+  params: { id: number };
+}) {
   const { id } = params;
-  const articleFakeOneData = articleFakeData.filter((data) => data.id == id)[0];
-
-  return <OnePage articleId={id} articleFakeOneData={articleFakeOneData} />;
+  const articles = await fetchAllBlogs();
+  const oneArticle =
+    articles && articles.filter((data) => data["_id"] == id.toString())[0];
+  return oneArticle && <OnePage article={oneArticle} />;
 }
