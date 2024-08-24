@@ -1,34 +1,23 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { FormEvent, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Button } from "./Button";
-import { postOneArticle } from "@/lib/api";
+import { IOneArticle } from "@/lib/type";
 
-export const AddForm = () => {
+export const EditForm = ({ article }: { article: IOneArticle }) => {
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
   const textRef = useRef<HTMLTextAreaElement | null>(null);
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    const title = titleRef.current;
-    const text = textRef.current;
-    if (title === null || text === null) return;
-    const inputTitle = title.value;
-    const inputText = text.value;
-    await postOneArticle(inputTitle, inputText);
-    router.push("/blog");
-  };
-
-  const handleCancel = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    e.preventDefault();
-    if (titleRef.current != null) titleRef.current.value = "";
-    if (textRef.current != null) textRef.current.value = "";
-  };
+  useEffect(() => {
+    if (titleRef.current) titleRef.current.value = article.title;
+    if (textRef.current) textRef.current.value = article.text;
+  }, []);
   const handleBack = () => {
-    router.push("/blog");
+    router.back();
+  };
+
+  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
   };
 
   return (
@@ -43,7 +32,7 @@ export const AddForm = () => {
           </Button>
         </header>
         <form
-          onSubmit={handleSubmit}
+          //   onSubmit={handleSubmit}
           className="w-full border-2 mx-auto my-auto flex justify-center rounded-lg bg-secondary"
         >
           <div className="addPostWrapper flex flex-col gap-2 w-full px-12 py-8 h-[calc(100dvh/1.5)]">

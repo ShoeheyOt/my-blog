@@ -1,5 +1,4 @@
 import { OnePage } from "@/components/pages/OnePage";
-import { articleFakeData } from "../../../../public/articleFakeData";
 import { fetchAllBlogs } from "@/lib/api";
 
 export default async function BlogOnePage({
