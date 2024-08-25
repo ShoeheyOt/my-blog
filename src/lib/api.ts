@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { INewOneArticle, IOneArticle } from "./type";
 
 export const fetchAllBlogs = async (): Promise<IOneArticle[] | undefined> => {
@@ -10,6 +11,41 @@ export const fetchAllBlogs = async (): Promise<IOneArticle[] | undefined> => {
     const data = await result.json();
 
     return data.articles;
+  } catch (error) {
+    console.error("something went wrong", error);
+  }
+};
+
+export const fetchOneArticle = async (articleId: number) => {
+  try {
+    const result = await fetch(`http://localhost:3000/api/blog/${articleId}`, {
+      method: "GET",
+      cache: "no-cache",
+    });
+    const data = await result.json();
+
+    return data.article;
+  } catch (error) {
+    console.error("something went wrong", error);
+  }
+};
+
+export const updateOneArticle = async (
+  _id: string,
+  title: string,
+  text: string
+) => {
+  try {
+    const result = await fetch(`http://localhost:3000/api/blog/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ _id, title, text }),
+    });
+    const data = await result.json();
+
+    return data;
   } catch (error) {
     console.error("something went wrong", error);
   }

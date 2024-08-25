@@ -1,8 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 import { Button } from "./Button";
 import { IOneArticle } from "@/lib/type";
+import { updateOneArticle } from "@/lib/api";
 
 export const EditForm = ({ article }: { article: IOneArticle }) => {
   const router = useRouter();
@@ -11,11 +12,26 @@ export const EditForm = ({ article }: { article: IOneArticle }) => {
   useEffect(() => {
     if (titleRef.current) titleRef.current.value = article.title;
     if (textRef.current) textRef.current.value = article.text;
-  }, []);
+  }, [titleRef, textRef]);
   const handleBack = () => {
     router.back();
   };
+  const handleUpdate = async (e: FormEvent) => {
+    e.preventDefault();
+    const id = article._id;
+    let title = "";
+    let text = "";
+    if (titleRef.current) {
+      title = titleRef.current.value;
+    }
+    if (textRef.current) {
+      text = textRef.current.value;
+    }
+    await updateOneArticle(id, title, text);
 
+    router.refresh();
+    router.push("/blog");
+  };
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
   };
@@ -32,7 +48,7 @@ export const EditForm = ({ article }: { article: IOneArticle }) => {
           </Button>
         </header>
         <form
-          //   onSubmit={handleSubmit}
+          onSubmit={handleUpdate}
           className="w-full border-2 mx-auto my-auto flex justify-center rounded-lg bg-secondary"
         >
           <div className="addPostWrapper flex flex-col gap-2 w-full px-12 py-8 h-[calc(100dvh/1.5)]">
