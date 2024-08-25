@@ -1,20 +1,14 @@
-import { IArticleFakeOneData } from "@/lib/type";
+import { IArticleFakeOneData, IOneArticle } from "@/lib/type";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
-export const OnePage = ({
-  articleId,
-  articleFakeOneData,
-}: {
-  articleId: number;
-  articleFakeOneData: IArticleFakeOneData;
-}) => {
-  const { title, text, createdAt, author } = articleFakeOneData;
+export const OnePage = ({ article }: { article: IOneArticle }) => {
+  const { title, text, createdAt } = article;
   return (
     <div className="oneArticleWrapper px-96 pt-24 min-h-screen bg-primary">
       <div className="text-D_title font-thin">{title}</div>
       <div className="flex gap-4 mt-4">
-        <div className="text-end">{author.authorName} | </div>
+        {/* <div className="text-end">{author.authorName} | </div> */}
         <div className="self-end">{createdAt}</div>
       </div>
       <div className="my-10 text-D_text min-h-80 font-thin text-center">

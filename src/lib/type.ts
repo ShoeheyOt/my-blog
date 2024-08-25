@@ -14,7 +14,7 @@ export interface IUser {
 export interface INewOneArticle {
   title: string;
   text: string;
-  createdAt: string;
+  createdAt: Date;
   isPublished: boolean;
 }
 
