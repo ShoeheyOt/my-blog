@@ -16,7 +16,7 @@ export const fetchAllBlogs = async (): Promise<IOneArticle[] | undefined> => {
   }
 };
 
-export const fetchOneArticle = async (articleId: number) => {
+export const fetchOneArticle = async (articleId: string) => {
   try {
     const result = await fetch(`http://localhost:3000/api/blog/${articleId}`, {
       method: "GET",
