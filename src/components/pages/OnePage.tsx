@@ -1,4 +1,4 @@
-import { IArticleFakeOneData, IOneArticle } from "@/lib/type";
+import { IOneArticle } from "@/lib/type";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
@@ -20,7 +20,9 @@ export const OnePage = ({ article }: { article: IOneArticle }) => {
           <Link href="/blog">Back</Link>
         </Button>
         <div className="flex gap-2">
-          <Button>Edit</Button>
+          <Button asChild>
+            <Link href={`${article._id}/edit`}>Edit</Link>
+          </Button>
           <Button variant="destructive">Delete</Button>
         </div>
       </div>

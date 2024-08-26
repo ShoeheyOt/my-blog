@@ -1,5 +1,5 @@
 import { OnePage } from "@/components/pages/OnePage";
-import { fetchAllBlogs, fetchOneArticle } from "@/lib/api";
+import { fetchOneArticle } from "@/lib/api";
 
 export default async function BlogOnePage({
   params,
@@ -8,5 +8,6 @@ export default async function BlogOnePage({
 }) {
   const { id } = params;
   const article = await fetchOneArticle(id);
+
   return article && <OnePage article={article} />;
 }
