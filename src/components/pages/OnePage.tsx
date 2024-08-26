@@ -1,9 +1,18 @@
+"use client";
 import { IOneArticle } from "@/lib/type";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { deleteArticle } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 export const OnePage = ({ article }: { article: IOneArticle }) => {
-  const { title, text, createdAt } = article;
+  const router = useRouter();
+  const { _id, title, text, createdAt } = article;
+  const handleClickDelete = async () => {
+    await deleteArticle(_id);
+    router.push("/blog");
+    router.refresh();
+  };
   return (
     <div className="oneArticleWrapper px-96 pt-24 min-h-screen bg-primary">
       <div className="text-D_title font-thin">{title}</div>
@@ -21,9 +30,11 @@ export const OnePage = ({ article }: { article: IOneArticle }) => {
         </Button>
         <div className="flex gap-2">
           <Button asChild>
-            <Link href={`${article._id}/edit`}>Edit</Link>
+            <Link href={`${_id}/edit`}>Edit</Link>
           </Button>
-          <Button variant="destructive">Delete</Button>
+          <Button variant="destructive" onClick={handleClickDelete}>
+            Delete
+          </Button>
         </div>
       </div>
     </div>
