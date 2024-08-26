@@ -18,6 +18,7 @@ export const AddForm = () => {
     const inputText = text.value;
     await postOneArticle(inputTitle, inputText);
     router.push("/blog");
+    router.refresh();
   };
 
   const handleCancel = async (

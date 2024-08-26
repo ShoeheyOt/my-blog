@@ -1,5 +1,5 @@
 import { INewOneArticle } from "@/lib/type";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 const uri = process.env.MONGODB_URL;
 const DB = process.env.MONGODB_DB_NAME;
@@ -57,8 +57,15 @@ export const POST = async (req: Request, res: NextResponse) => {
 export const DELETE = async (req: Request, res: NextResponse) => {
   try {
     await main();
+    const input = await req.json();
+    const articleId = ObjectId.createFromHexString(input);
+    const result = await client
+      .db(DB)
+      .collection(COLLECTION!)
+      .deleteOne({ _id: articleId });
+    return NextResponse.json({ message: "success" }, { status: 201 });
   } catch (error) {
-    Error("failed to Delete the data");
+    Error("failed to Delete the data", error!);
   } finally {
     await client.close();
   }
