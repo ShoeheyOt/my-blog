@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 import { INewOneArticle, IOneArticle } from "./type";
 
 export const fetchAllBlogs = async (): Promise<IOneArticle[] | undefined> => {
@@ -16,7 +15,7 @@ export const fetchAllBlogs = async (): Promise<IOneArticle[] | undefined> => {
   }
 };
 
-export const fetchOneArticle = async (articleId: number) => {
+export const fetchOneArticle = async (articleId: string) => {
   try {
     const result = await fetch(`http://localhost:3000/api/blog/${articleId}`, {
       method: "GET",
@@ -73,5 +72,20 @@ export const postOneArticle = async (title: string, text: string) => {
     return data;
   } catch (error) {
     console.error("couldn't post an article", error);
+  }
+};
+
+export const deleteArticle = async (articleId: string) => {
+  try {
+    const result = await fetch("http://localhost:3000/api/blog", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(articleId),
+    });
+    return result;
+  } catch (error) {
+    console.error("couldn't delete article", error);
   }
 };

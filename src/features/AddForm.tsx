@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef } from "react";
 import { Button } from "./Button";
 import { postOneArticle } from "@/lib/api";
 
@@ -18,6 +18,7 @@ export const AddForm = () => {
     const inputText = text.value;
     await postOneArticle(inputTitle, inputText);
     router.push("/blog");
+    router.refresh();
   };
 
   const handleCancel = async (

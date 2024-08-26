@@ -13,9 +13,11 @@ export const EditForm = ({ article }: { article: IOneArticle }) => {
     if (titleRef.current) titleRef.current.value = article.title;
     if (textRef.current) textRef.current.value = article.text;
   }, [titleRef, textRef]);
+
   const handleBack = () => {
     router.back();
   };
+
   const handleUpdate = async (e: FormEvent) => {
     e.preventDefault();
     const id = article._id;
@@ -29,8 +31,8 @@ export const EditForm = ({ article }: { article: IOneArticle }) => {
     }
     await updateOneArticle(id, title, text);
 
-    router.refresh();
     router.push("/blog");
+    router.refresh();
   };
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import { BSON, MongoClient, ObjectId } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 import { main } from "../route";
 
@@ -8,14 +8,15 @@ const COLLECTION = process.env.MONGODB_COLLECTION_ARTICLES;
 const client = new MongoClient(uri!);
 
 export const GET = async (req: Request, res: NextResponse) => {
-  const articleId = await req.json();
   try {
+    const request = req.url.split("/blog/")[1];
+    const articleId = ObjectId.createFromHexString(request);
     await main();
+
     const article = await client
       .db(DB)
       .collection(COLLECTION!)
-      .find({ _id: articleId })
-      .toArray();
+      .findOne({ _id: articleId });
 
     return NextResponse.json({ message: "success", article }, { status: 200 });
   } catch (error) {
@@ -28,7 +29,8 @@ export const GET = async (req: Request, res: NextResponse) => {
 export const PUT = async (req: Request, res: NextResponse) => {
   try {
     const { _id, text } = await req.json();
-    const bId = new ObjectId(_id);
+    //new ObjectId(_id) is deprecated
+    const bId = ObjectId.createFromHexString(_id);
 
     await main();
 

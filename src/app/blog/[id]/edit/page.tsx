@@ -1,15 +1,12 @@
 import { EditForm } from "@/features/EditForm";
-import { fetchAllBlogs } from "@/lib/api";
+import { fetchAllBlogs, fetchOneArticle } from "@/lib/api";
 
 export default async function EditArticle({
   params,
 }: {
-  params: { id: number };
+  params: { id: string };
 }) {
-  const allBlogs = await fetchAllBlogs();
-  const article = allBlogs?.filter(
-    (data) => data._id == params.id.toString()
-  )[0];
+  const article = await fetchOneArticle(params.id);
 
   return article && <EditForm article={article} />;
 }
