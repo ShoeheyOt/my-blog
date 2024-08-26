@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 import { INewOneArticle, IOneArticle } from "./type";
 
 export const fetchAllBlogs = async (): Promise<IOneArticle[] | undefined> => {

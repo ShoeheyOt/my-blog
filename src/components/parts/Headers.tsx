@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/features/Button";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export const Headers = () => {
